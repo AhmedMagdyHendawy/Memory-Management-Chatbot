@@ -5,7 +5,7 @@
 #include "chatbot.h"
 #include "chatlogic.h"
 #include "chatgui.h"
-
+#include <iostream>
 // size of chatbot window
 const int width = 414;
 const int height = 736;
@@ -20,6 +20,7 @@ bool ChatBotApp::OnInit()
 {
     // create window with name and show it
     ChatBotFrame *chatBotFrame = new ChatBotFrame(wxT("Udacity ChatBot"));
+    
     chatBotFrame->Show(true);
 
     return true;
@@ -118,8 +119,8 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     ////
 
     // create chat logic instance
-    _chatLogic = new ChatLogic(); 
-
+    _chatLogic = std::make_unique<ChatLogic>();  
+    // SetChatLogicHandle(std::make_unique<ChatLogic>());
     // pass pointer to chatbot dialog so answers can be displayed in GUI
     _chatLogic->SetPanelDialogHandle(this);
 
@@ -134,9 +135,7 @@ ChatBotPanelDialog::~ChatBotPanelDialog()
 {
     //// STUDENT CODE
     ////
-
-    delete _chatLogic;
-
+    std::cout<<"Chatlogic is deleted\n";
     ////
     //// EOF STUDENT CODE
 }
