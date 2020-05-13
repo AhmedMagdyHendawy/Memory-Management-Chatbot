@@ -11,7 +11,7 @@
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
-    std::cout<<"Chatbot Constructor\n";
+//     std::cout<<"Chatbot Constructor\n";
     // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
